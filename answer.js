@@ -56,13 +56,17 @@ console.log("Ready to begin.");
  * Write your code below and put the answer into the variable ANSWER.
  */
 
-
-
+function sumRangeNumbers(lowest, highest) {
+  let sum = 0;
+  for(let i = lowest ; i <= highest ; i++){
+      sum +=  i ;
+ }
+ return sum ;
  
+}
 
 
-ANSWER = "Replace this text with the variable holding the answer.";
-
+   ANSWER = sumRangeNumbers(22, 91);
 // I will now test your answer - change false to true to get a hint.
 dbwebb.assert("1.1", ANSWER, false);
 
@@ -80,12 +84,26 @@ dbwebb.assert("1.1", ANSWER, false);
  * Write your code below and put the answer into the variable ANSWER.
  */
 
+function fruitColor(fruit) {
+    switch (fruit) {
+      case "banana":
+        return "yellow";
+      case "apple":
+      case "kiwi":
+        return "green";
+      case "plum":
+        return "red";
+      default:
+        return "unknown";
+    }
+  }
+  
+   
 
 
 
 
-
-ANSWER = "Replace this text with the variable holding the answer.";
+   ANSWER = fruitColor("plum");
 
 // I will now test your answer - change false to true to get a hint.
 dbwebb.assert("1.2", ANSWER, false);
@@ -103,13 +121,34 @@ dbwebb.assert("1.2", ANSWER, false);
  *
  * Write your code below and put the answer into the variable ANSWER.
  */
+function printRange(rangeStart, rangeStop) {
+    let result = '';
+    
+    for (let i = rangeStart; i <= rangeStop; i++) {
+      result += i;
+      
+      if (i < rangeStop) {
+        result += ',';
+      }
+    }
+    
+    return result;
+  }
+  
+  
+  
+
+
+  
+  
+  
+  
 
 
 
 
 
-
-ANSWER = "Replace this text with the variable holding the answer.";
+ANSWER  = printRange(25, 46);;
 
 // I will now test your answer - change false to true to get a hint.
 dbwebb.assert("1.3", ANSWER, false);
@@ -127,13 +166,28 @@ dbwebb.assert("1.3", ANSWER, false);
  *
  * Write your code below and put the answer into the variable ANSWER.
  */
+function printRangeReversed(rangeStart, rangeStop) {
+    let result = '';
+  
+    for (let i = rangeStart; i >= rangeStop; i--) {
+      result += i;
+  
+      if (i > rangeStop) {
+        result += ',';
+      }
+    }
+  
+    return result;
+  }
+  
+  
+  
 
 
 
 
 
-
-ANSWER = "Replace this text with the variable holding the answer.";
+ANSWER = printRangeReversed(46, 25);
 
 // I will now test your answer - change false to true to get a hint.
 dbwebb.assert("1.4", ANSWER, false);
@@ -157,13 +211,22 @@ dbwebb.assert("1.4", ANSWER, false);
  *
  * Write your code below and put the answer into the variable ANSWER.
  */
+function printAnyRange(rangeStart , rangeStop){
+    if(rangeStart <= rangeStop){
+        return printRange(rangeStart,rangeStop);
+    }else {
+        return printRangeReversed(rangeStart,rangeStop);
+    }
+}
+  
+
+  
 
 
 
 
 
-
-ANSWER = "Replace this text with the variable holding the answer.";
+ANSWER = printAnyRange(25, 46);
 
 // I will now test your answer - change false to true to get a hint.
 dbwebb.assert("1.5", ANSWER, false);
@@ -179,14 +242,28 @@ dbwebb.assert("1.5", ANSWER, false);
  * Test the function and answer with the result.
  *
  * Write your code below and put the answer into the variable ANSWER.
- */
+ *
+ **/
+function stringRepeat(inputString, repeatCount) {
+    let result = '';
+    
+    for (let i = 0; i < repeatCount; i++) {
+      result += inputString;
+    }
+    
+    return result;
+  }
+  
+  
+  
+  
+
+  
 
 
 
 
-
-
-ANSWER = "Replace this text with the variable holding the answer.";
+ANSWER = stringRepeat("grey", 12);
 
 // I will now test your answer - change false to true to get a hint.
 dbwebb.assert("1.6", ANSWER, false);
@@ -208,12 +285,18 @@ dbwebb.assert("1.6", ANSWER, false);
  * Write your code below and put the answer into the variable ANSWER.
  */
 
+function inRange( rangeStart , rangeStop , value ){
+
+    return value > rangeStart && value < rangeStop;
+}
+  
+  
+  
 
 
 
 
-
-ANSWER = "Replace this text with the variable holding the answer.";
+ANSWER = inRange(131, 547, 434);
 
 // I will now test your answer - change false to true to get a hint.
 dbwebb.assert("1.7", ANSWER, false);
@@ -229,12 +312,15 @@ dbwebb.assert("1.7", ANSWER, false);
  * Write your code below and put the answer into the variable ANSWER.
  */
 
+function inRange( rangeStart , rangeStop , value){
+    
+    return value > rangeStart && value < rangeStop;
+}
 
 
 
 
-
-ANSWER = "Replace this text with the variable holding the answer.";
+ANSWER = inRange(131, 547, 636);
 
 // I will now test your answer - change false to true to get a hint.
 dbwebb.assert("1.8", ANSWER, false);
@@ -252,11 +338,21 @@ dbwebb.assert("1.8", ANSWER, false);
  */
 
 
+function degreesToRadians(degrees) {
+    const radians = degrees * (Math.PI / 180);
+    return Number(radians.toFixed(4));
+  }
+  
+
+ 
+  
+  
+  
+  
 
 
 
-
-ANSWER = "Replace this text with the variable holding the answer.";
+ANSWER = degreesToRadians(32);
 
 // I will now test your answer - change false to true to get a hint.
 dbwebb.assert("1.9", ANSWER, false);
@@ -282,12 +378,39 @@ dbwebb.assert("1.9", ANSWER, false);
  */
 
 
- 
+function fizzBuzz(start , stop){
+  let result = "";
+   
+ for( let i = start ; i <= stop ; i++){
+    if(i != start){
+    result = result + ","  ;
+    }
+    if(i % 3 == 0 && i % 5 == 0){
+      result = result + "Fizz Buzz";
+    }else if(i % 3 == 0){
+      result = result + "Fizz";
+    }else if(i % 5 == 0){
+      result = result + "Buzz";
+    }else{
+      result = result + i;
+    }
+ }
+  return result;
 
 
+}
 
-ANSWER = "Replace this text with the variable holding the answer.";
+  
+  
+  
+  
+  
 
+ANSWER = fizzBuzz(1, 30);
+
+     
+      
+    
 // I will now test your answer - change false to true to get a hint.
 dbwebb.assert("1.10", ANSWER, false);
 
@@ -300,6 +423,8 @@ dbwebb.assert("1.10", ANSWER, false);
  *
  */
 
+  
+    
 
 
 /**
@@ -317,13 +442,31 @@ dbwebb.assert("1.10", ANSWER, false);
  *
  * Write your code below and put the answer into the variable ANSWER.
  */
+function printSum(playerHand , dealerHand){
+   let N = playerHand.length;
+   let Sum1 = 0;
+   for(let i = 0 ; i < N ; i++){
+     Sum1 = Sum1 + playerHand[i];
+   }
+    let D = dealerHand.length;
+    let Sum2 = 0;
+    for(let i = 0 ; i < D ; i++){
+      Sum2 = Sum2 + dealerHand[i];
+    }   
+   
+   
+  
+    return "Player: " + Sum1 + ", Dealer: " + Sum2 ;
+}
 
 
+let playerHand = [4, 10, 3];
+
+let dealerHand = [3, 6, 11];
+printSum(playerHand , dealerHand)
 
 
-
-
-ANSWER = "Replace this text with the variable holding the answer.";
+ANSWER = printSum(playerHand , dealerHand);
 
 // I will now test your answer - change false to true to get a hint.
 dbwebb.assert("2.1", ANSWER, false);
@@ -354,12 +497,40 @@ dbwebb.assert("2.1", ANSWER, false);
  * Write your code below and put the answer into the variable ANSWER.
  */
 
+function printResult(playerHand, dealerHand) {
+    let playerStatus, dealerStatus;
+  
+    if (playerHand === 21) {
+      playerStatus = "black jack";
+    } else if (playerHand < 21) {
+      playerStatus = "safe";
+    } else {
+      playerStatus = "busted";
+    }
+  
+    if (dealerHand < 17) {
+      dealerStatus = "safe";
+    } else if (dealerHand >= 17 && dealerHand < 21) {
+      dealerStatus = "stop";
+    } else if (dealerHand === 21) {
+      dealerStatus = "black jack";
+    } else {
+      dealerStatus = "busted";
+    }
+  
+    return `Player: ${playerStatus}, Dealer: ${dealerStatus}`;
+  }
+  
+  /*const playerHand = 4 + 10 + 3;
+  const dealerHand = 3 + 6 + 11;
+  const ANSWER = printResult(playerHand, dealerHand);
+  console.log(ANSWER);*/
+  
 
 
 
 
-
-ANSWER = "Replace this text with the variable holding the answer.";
+ANSWER = printResult(playerHand, dealerHand);
 
 // I will now test your answer - change false to true to get a hint.
 dbwebb.assert("2.2", ANSWER, false);
