@@ -497,40 +497,76 @@ dbwebb.assert("2.1", ANSWER, false);
  * Write your code below and put the answer into the variable ANSWER.
  */
 
-function printResult(playerHand, dealerHand) {
-    let playerStatus, dealerStatus;
+function printResult( playerHand, dealerHand ){
   
-    if (playerHand === 21) {
-      playerStatus = "black jack";
-    } else if (playerHand < 21) {
-      playerStatus = "safe";
-    } else {
-      playerStatus = "busted";
-    }
-  
-    if (dealerHand < 17) {
-      dealerStatus = "safe";
-    } else if (dealerHand >= 17 && dealerHand < 21) {
-      dealerStatus = "stop";
-    } else if (dealerHand === 21) {
-      dealerStatus = "black jack";
-    } else {
-      dealerStatus = "busted";
-    }
-  
-    return `Player: ${playerStatus}, Dealer: ${dealerStatus}`;
+
+  let N = playerHand.length;
+  let playerHand_sum = 0;
+  for(let i = 0 ; i < N ; i++){
+    playerHand_sum = playerHand_sum + playerHand[i];
   }
+   let D = dealerHand.length;
+   let dealerHand_sum = 0;
+   for(let i = 0 ; i < D ; i++){
+    dealerHand_sum = dealerHand_sum + dealerHand[i];
+   }   
+
+
+  let playerHandStatus;
+
+  if(playerHand_sum == 21){
+
+     playerHandStatus = "balack jack";
+
+  }else if(playerHand_sum < 21){
+
+    playerHandStatus = "safe";
+
+  }else{
+
+    playerHandStatus = "busted";
+
+  }
+
+  let dealerHandStatus;
   
-  /*const playerHand = 4 + 10 + 3;
-  const dealerHand = 3 + 6 + 11;
-  const ANSWER = printResult(playerHand, dealerHand);
-  console.log(ANSWER);*/
+  if(dealerHand_sum < 17){
+
+    dealerHandStatus = "safe";
   
+  }else if(dealerHand_sum >= 17 && dealerHand_sum < 21){
+
+    dealerHandStatus = "stop";
+
+  }else if(dealerHand_sum === 21){
+
+      dealerHandStatus = "black jack";
+  
+  }else{
+
+    dealerHandStatus = "busted";
+  }
+
+  return `Player: ${playerHandStatus}, Dealer: ${dealerHandStatus}`;
+
+
+}
+
+
+       
+
+
+
+playerHand = [4, 10, 3];
+
+dealerHand = [3, 6, 11];
 
 
 
 
-ANSWER = printResult(playerHand, dealerHand);
+
+ANSWER = printResult( playerHand, dealerHand );
+
 
 // I will now test your answer - change false to true to get a hint.
 dbwebb.assert("2.2", ANSWER, false);
@@ -548,13 +584,24 @@ dbwebb.assert("2.2", ANSWER, false);
  *
  * Write your code below and put the answer into the variable ANSWER.
  */
+function calculateInterest(p, y, r) {
+  let r_pt = r / 100;
+
+  let a = p * Math.pow(1 + r_pt, y);
+
+  // Round the final amount to 4 decimal places
+  return parseFloat(a.toFixed(4));
+ 
+}
 
 
 
+let p = 745
+let y = 31
+let r = 5
 
 
-
-ANSWER = "Replace this text with the variable holding the answer.";
+ANSWER = calculateInterest(p,y,r);
 
 // I will now test your answer - change false to true to get a hint.
 dbwebb.assert("2.3", ANSWER, false);
